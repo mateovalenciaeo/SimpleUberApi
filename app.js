@@ -14,4 +14,8 @@ app.use(bodyParser.json());
 
 driverRoute(app);
 
+app.use((err, req, res, next) => {
+    res.status(422).send({ error: err.message });
+});
+
 export { app };
