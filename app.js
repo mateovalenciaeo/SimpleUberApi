@@ -4,7 +4,9 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/muber');
+if (process.env.NODE_ENV !== 'test') {
+    mongoose.connect('mongodb://localhost/muber_dev');
+}
 
 const app = express();
 
